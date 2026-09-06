@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Login = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
   const submitHandler=(e)=>{
     e.preventDefault();
-    // console.log("submitted the form");
+    // console.log("email is ",{email});
+    // console.log("password is ",{password});
+
+    setEmail('');
+    setPassword('');
   }
   
   return (
@@ -15,9 +21,19 @@ const Login = () => {
         }}
         className='flex flex-col justify-center items-center p-4'>
 
-            <input className='border-2 border-emerald-600 rounded-full p-2 outline-none bg-transparent' required type="email" placeholder='Enter your name'/>
+            <input
+            value={email}
+            onChange={(e)=>{
+                setEmail(e.target.value);
+            }}
+            className='border-2 border-emerald-600 rounded-full p-2 outline-none bg-transparent' required type="email" placeholder='Enter your name'/>
 
-            <input className='border-2 border-emerald-600 rounded-full p-2 outline-none mt-2 bg-transparent' required type="password" placeholder='Enter password'/>
+            <input
+            value={password}
+            onChange={(e)=>{
+                setPassword(e.target.value);
+            }}
+            className='border-2 border-emerald-600 rounded-full p-2 outline-none mt-2 bg-transparent' required type="password" placeholder='Enter password'/>
 
             <button className='bg-emerald-600 w-full px-1 py-2 mt-2 rounded-full active:scale-95'>Log In</button>
         </form>
