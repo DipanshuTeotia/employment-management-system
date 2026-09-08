@@ -1,19 +1,18 @@
 import React from 'react'
 
-const NewTask = () => {
+const NewTask = ({data}) => {
   return (
     <div className="h-full shrink-0 w-75 bg-blue-400 p-4 rounded-xl">
       <div className="flex justify-between items-center">
-        <h2 className="bg-red-500 px-2 w-fit rounded font-semibold">High</h2>
-        <h3 className="text-sm">6th sep</h3>
+        <h2 className="bg-red-500 px-2 w-fit rounded font-semibold">{data.category}</h2>
+        <h3 className="text-sm">{data.taskDate}</h3>
       </div>
       <div>
         <h1 className="text-2xl font-bold mt-5 flex flex-nowrap">
-          Task Heading
+          {data.taskTitle}
         </h1>
         <p className="text-lg mt-4 ">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi,
-          voluptas.
+          {data.taskDescription}
         </p>
       </div>
       <div className="flex justify-between mt-4">
