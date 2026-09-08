@@ -1,45 +1,27 @@
 import React from 'react'
+import AcceptTask from './AcceptTask'
+import CompleteTask from './CompleteTask'
+import FailledTask from './FailledTask'
+import NewTask from './NewTask'
 
-const TaskList = () => {
+const TaskList = ({data}) => {
+  // console.log(data.taskCounts);
   return (
     <div className='p-4 mt-4 flex items-center justify-start h-[55%] flex-nowrap gap-4 overflow-x-auto'>
-      
-      <div className='h-full shrink-0 w-75 bg-red-400 p-4 rounded-xl'>
-        <div className='flex justify-between items-center'>
-            <h2 className='bg-red-500 px-2 w-fit rounded font-semibold'>High</h2>
-            <h3 className='text-sm'>6th sep</h3>
-        </div>
-        <h1 className='text-2xl font-bold mt-5 flex flex-nowrap'>Task Heading</h1>
-        <p className='text-lg mt-4 '>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi, voluptas.</p>
-      </div>
-
-      <div className='h-full shrink-0 w-75 bg-green-400 p-4 rounded-xl'>
-        <div className='flex justify-between items-center'>
-            <h2 className='bg-red-500 px-2 w-fit rounded font-semibold'>High</h2>
-            <h3 className='text-sm'>6th sep</h3>
-        </div>
-        <h1 className='text-2xl font-bold mt-5 flex-nowrap'>Task Heading</h1>
-        <p className='text-lg mt-4 '>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi, voluptas.</p>
-      </div>
-
-      <div className='h-full shrink-0 w-75 bg-blue-400 p-4 rounded-xl'>
-        <div className='flex justify-between items-center'>
-            <h2 className='bg-red-500 px-2 w-fit rounded font-semibold'>High</h2>
-            <h3 className='text-sm'>6th sep</h3>
-        </div>
-        <h1 className='text-2xl font-bold mt-5 flex-nowrap'>Task Heading</h1>
-        <p className='text-lg mt-4 '>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi, voluptas.</p>
-      </div>
-
-      <div className='h-full shrink-0 w-75 bg-yellow-400 p-4 rounded-xl'>
-        <div className='flex justify-between items-center'>
-            <h2 className='bg-red-500 px-2 w-fit rounded font-semibold'>High</h2>
-            <h3 className='text-sm'>6th sep</h3>
-        </div>
-        <h1 className='text-2xl font-bold mt-5 flex-nowrap'>Task Heading</h1>
-        <p className='text-lg mt-4 '>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi, voluptas.</p>
-      </div>
-    
+      {data.tasks.map((ele,idx)=>{
+        if(ele.active){
+          return <AcceptTask key={idx}/>;
+        }
+        if(ele.newTask){
+          return <NewTask key={idx}/>
+        }
+        if(ele.completed){
+          return <CompleteTask key={idx}/>
+        }
+        if(ele.failed){
+          return <FailledTask key={idx}/>
+        }
+      })}
     </div>
   )
 }
