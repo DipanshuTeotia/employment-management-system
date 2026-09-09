@@ -7,19 +7,27 @@ const CreateTasks = () => {
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
 
-  const [task, setTask] = useState({});
-
   const submitHandler = (e)=>{
     e.preventDefault();
-    setTask({taskTitle,description,date,category,active:false,newTask:true,competed:false,failed:false});
-    console.log(task);
-    
-    // setTaskTitle('');
-    // setDate('');
-    // setAssignTo('');
-    // setCategory('');
-    // setDescription('');
-    
+    const task ={taskTitle,description,date,category,active:false,newTask:true,competed:false,failed:false};
+
+    const data = JSON.parse(localStorage.getItem('employee'));
+    // console.log(data);
+    data.forEach((ele)=>{
+      if(assignTo==ele.firstName){
+        ele.tasks.push(task);
+      }
+    })
+    localStorage.removeItem('employee');
+    localStorage.setItem('employee',JSON.stringify(data));
+    console.log(data);
+    console.log(JSON.parse(localStorage.getItem('employee')));
+
+    setTaskTitle('');
+    setDate('');
+    setAssignTo('');
+    setCategory('');
+    setDescription('');
   }
   return (
     <div className='m-4 bg-[#383838] flex justify-between p-5 text-gray-300 rounded-xl'>
