@@ -46,7 +46,7 @@ const App = () => {
     <div className='h-screen w-full bg-black text-white'>
       <>
       {!user ? <Login handleLogin={handleLogin}/> : ''}
-      {user=='admin' ? <AdminDashboard/> : (user=='employee' ? <EmployeDashboard data={loggedInUserData}/> : null)}
+      {user=='admin' ? <AdminDashboard changeUser={setUser}/> : (user=='employee' ? <EmployeDashboard changeUser={setUser} data={loggedInUserData}/> : null)}
       </>
     </div>
   )
