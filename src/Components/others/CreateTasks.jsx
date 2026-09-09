@@ -16,12 +16,12 @@ const CreateTasks = () => {
     data.forEach((ele)=>{
       if(assignTo==ele.firstName){
         ele.tasks.push(task);
+        ele.taskCounts.newTask+=1;
       }
     })
-    localStorage.removeItem('employee');
     localStorage.setItem('employee',JSON.stringify(data));
-    console.log(data);
-    console.log(JSON.parse(localStorage.getItem('employee')));
+    // console.log(data);
+    // console.log(JSON.parse(localStorage.getItem('employee')));
 
     setTaskTitle('');
     setDate('');

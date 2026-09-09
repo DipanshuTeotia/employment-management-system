@@ -1,8 +1,7 @@
 import React from 'react'
 
 const Header = (props) => {
-  // console.log(data)
-  // console.log(props.changeUser);
+  // console.log(props.changeUser)
   const logOut = ()=>{
     localStorage.setItem("loggedInUser","");
     props.changeUser('');

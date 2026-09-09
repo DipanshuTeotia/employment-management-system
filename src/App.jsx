@@ -16,8 +16,19 @@ const App = () => {
     const loggedInUser = localStorage.getItem('loggedInUser');
     if(loggedInUser){
       const userData=JSON.parse(loggedInUser);
+      console.log(userData);
       setUser(userData.role);
-      setLoggedInUserData(userData.data);
+
+      if (userData.role == 'employee') {
+        // always pull fresh employee data by email, not the cached copy
+        const freshData = JSON.parse(localStorage.getItem('employee'));
+        // console.log(freshData);
+        const currentEmployee = freshData.find((e) => e.email === userData.data.email);
+        // console.log(currentEmployee);
+        setLoggedInUserData(currentEmployee);
+      } else {
+        setLoggedInUserData('admin');
+      }
     }
   }, [])
   
