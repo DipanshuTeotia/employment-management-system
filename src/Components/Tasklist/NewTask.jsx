@@ -12,7 +12,7 @@ const NewTask = ({data}) => {
           {data.taskTitle}
         </h1>
         <p className="text-lg mt-4 ">
-          {data.taskDescription}
+          {data.description}
         </p>
       </div>
       <div className="flex justify-between mt-4">
